@@ -38,7 +38,7 @@ volumes:[
         sh """docker image build \
           -t ${env.IMAGE}:${env.TAG_BETA} ."""
         withCredentials([usernamePassword(
-          credentialsId: "docker",
+          credentialsId: "dockerhub",
           usernameVariable: "USER",
           passwordVariable: "PASS"
         )]) {
