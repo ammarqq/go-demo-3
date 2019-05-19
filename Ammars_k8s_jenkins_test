@@ -46,6 +46,9 @@ volumes:[
 ]){
       node(label) {
         
+        stage('Checkout') {
+                checkout scm
+        }
 
             // container('maven') {
             // stage('git repo') {
