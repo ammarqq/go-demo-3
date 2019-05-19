@@ -12,6 +12,8 @@ env.CHART_VER = "0.0.1"
 env.CHART_NAME = "go-demo-3-${env.BUILD_NUMBER}-${env.BRANCH_NAME}"
 def label = "jenkins-slave-${UUID.randomUUID().toString()}"
 
+public void dockerTemplate(body) {
+def label = "jenkins-slave-${UUID.randomUUID().toString()}"  
 podTemplate(
   label: label,
   namespace: "go-demo-3-build",
@@ -41,6 +43,10 @@ spec:
 volumes:[
     hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
 ])
+{
+    body.call(label)
+}
+}
 {
   node(label) {
 
