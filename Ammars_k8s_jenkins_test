@@ -65,9 +65,9 @@ volumes:[
             stage("func-test") {
             try {
              container("helm") {
-             sh """helm upgrade \
+             sh """helm upgrade --install -wait --force\
             ${env.CHART_NAME} \
-            helm/go-demo-3 -i \
+            helm/go-demo-3  \
             --tiller-namespace go-demo-3-build \
             --set image.tag=${env.TAG_BETA} \
             --set ingress.host=${env.ADDRESS}"""
