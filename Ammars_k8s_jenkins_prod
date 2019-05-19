@@ -83,7 +83,6 @@ volumes:[
       }
     }
     stage("release") {
-
       container("docker") {
         sh """docker pull \
           ${env.IMAGE}:${env.TAG_BETA}"""
