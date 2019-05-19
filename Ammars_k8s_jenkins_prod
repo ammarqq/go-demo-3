@@ -83,9 +83,9 @@ volumes:[
         }
       }
     }
-    stage("release") {0.3
+    stage("release") {
 
-      node("docker") {
+      container("docker") {
         sh """docker pull \
           ${env.IMAGE}:${env.TAG_BETA}"""
         sh """docker image tag \
