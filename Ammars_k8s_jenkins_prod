@@ -28,12 +28,12 @@ volumes:[
 ]){
   node(label) {
 
-    //  stage('Checkout') {
-    //             checkout scm
-    //     }
+     stage('Checkout') {
+                checkout scm
+        }
     container("docker") {
       stage("build") {
-        git "${env.REPO}"
+        // git "${env.REPO}"
         sh """docker image build \
           -t ${env.IMAGE}:${env.TAG_BETA} ."""
         withCredentials([usernamePassword(
